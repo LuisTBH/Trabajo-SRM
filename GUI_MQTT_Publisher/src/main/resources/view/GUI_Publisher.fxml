@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="690.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="upv.es.SRM.controller.Publisher_controller">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="705.0" VBox.vgrow="ALWAYS">
+      <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="705.0" style="-fx-background-color: #c6c6c6;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Text fill="#2727e1" focusTraversable="true" strokeType="OUTSIDE" strokeWidth="0.0" text="Image Publisher Client for MQTT">
+                     <font>
+                        <Font name="Impact" size="45.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <GridPane alignment="CENTER_LEFT" layoutX="119.0" layoutY="134.0" prefHeight="269.0" prefWidth="505.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="134.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="333.0" minWidth="10.0" prefWidth="117.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="566.0" minWidth="10.0" prefWidth="322.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Server URI">
+                     <font>
+                        <Font name="Arial Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label text="ClientID" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Arial Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <Label text="Status" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Arial Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="server_uri_field" prefHeight="25.0" prefWidth="150.0" promptText="tcp://localhost:1883" GridPane.columnIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="clientID_field" promptText="JavaPublisherDefaultID" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="10.0" layoutY="40.0" text="Topic" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Arial Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="topic_field" layoutX="160.0" layoutY="37.0" promptText="Planta0/Sensor/Data/" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="10.0" layoutY="68.0" text="Qos" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Arial Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <children>
+                        <ComboBox fx:id="qos_box" prefHeight="32.0" prefWidth="155.0" />
+                        <Label prefHeight="33.0" prefWidth="162.0" text="Time (sec)">
+                           <font>
+                              <Font name="Arial Bold" size="21.0" />
+                           </font>
+                           <padding>
+                              <Insets left="25.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="time_field" alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="106.0" promptText="30">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <TextField fx:id="status_field" editable="false" prefHeight="0.0" prefWidth="563.0" text="Disconnected" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </GridPane>
+            <Button fx:id="btn_conectar" layoutX="344.0" layoutY="425.0" mnemonicParsing="false" onAction="#accion" prefHeight="45.0" prefWidth="146.0" text="Connect &amp; Publish">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button fx:id="btn_desconectar" disable="true" layoutX="515.0" layoutY="425.0" mnemonicParsing="false" onAction="#desconectar" prefHeight="45.0" prefWidth="100.0" text="Disconnect">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <TextArea fx:id="consola" editable="false" layoutX="97.0" layoutY="498.0" prefHeight="140.0" prefWidth="518.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextArea>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
